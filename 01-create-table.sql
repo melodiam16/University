@@ -1,27 +1,27 @@
 	CREATE TABLE employee(
-	employee_id INTEGER PRIMARY KEY,
-	employee_name VARCHAR(30) NOT NULL,
-	employee_last_name VARCHAR(30) NOT NULL,
-	employee_position VARCHAR NOT NULL,
-	employee_salary NUMERIC CHECK(employee_salary > 0)
+	id UUID PRIMARY KEY,
+	name VARCHAR(30) NOT NULL,
+	last_name VARCHAR(30) NOT NULL,
+	position VARCHAR NOT NULL,
+	salary NUMERIC CHECK(employee_salary > 0)
 	);
 	
 	
 	ALTER TABLE employee
-	ALTER COLUMN employee_position SET DATA TYPE VARCHAR(30);
+	ALTER COLUMN position SET DATA TYPE VARCHAR(30);
 	
 	
 	ALTER TABLE employee
-	DROP COLUMN employee_position;
+	DROP COLUMN position;
 	
 	ALTER TABLE employee
-	DROP COLUMN employee_salary;
+	DROP COLUMN salary;
 	
-	CREATE TABLE job_position(
-	position_id INTEGER PRIMARY KEY,
-	position_name VARCHAR(30) NOT NULL,
-	position_respons VARCHAR(30),
-	position_salary NUMERIC CHECK(position_salary > 0)
+	CREATE TABLE position(
+	id UUID PRIMARY KEY,
+	name VARCHAR(30) NOT NULL,
+	obligation VARCHAR(30),
+	salary NUMERIC CHECK(salary > 0)
 	);
 	
 	ALTER TABLE employee 
@@ -30,14 +30,16 @@
 	
 	ALTER TABLE employee
 	ADD CONSTRAINT fk_position FOREIGN KEY (position_id)
-	REFERENCES job_position(position_id)
+	REFERENCES position(position_id)
 	ON DELETE SET NULL
 	ON UPDATE CASCADE;
 	
-	SELECT * FROM employee;
-	
-	ALTER TABLE job_position 
-	ALTER COLUMN position_name TYPE VARCHAR(100), 
-	ALTER COLUMN position_respons TYPE VARCHAR(255);
 	
 	
+	ALTER TABLE position 
+	ALTER COLUMN name TYPE VARCHAR(100), 
+	ALTER COLUMN obligation TYPE VARCHAR(255);
+	
+	ALTER TABLE employee 
+	ADD COLUMN phone_number VARCHAR(30),
+	ADD COLUMN email VARCHAR(320);

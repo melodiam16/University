@@ -1,4 +1,4 @@
-INSERT INTO job_position (position_id, position_name, position_respons, position_salary)
+INSERT INTO position (id, name, obligation, salary)
 	VALUES 
 	(1, 'Rector', 'Responsible for overall strategy, financial management, and organizational work.', 2000),
 	(2, 'Professor', 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.', 1500),
@@ -6,9 +6,8 @@ INSERT INTO job_position (position_id, position_name, position_respons, position
 	(4, 'Librarian', 'Organizes library operations, helping students and staff find resources.', 650),
 	(5, 'Program Coordinator', 'Manages specific educational programs or courses.', 800);
 	
-	SELECT * FROM job_position;
 	
-	INSERT INTO employee (employee_id, employee_name, employee_last_name, employee_age, position_id)
+	INSERT INTO employee (id, name, last_name, age, position_id)
 	VALUES 
 	(01, 'Anna', 'Koval', 42, 2),
 	(02, 'Emma', 'Johnson', 27, 5),
@@ -21,33 +20,54 @@ INSERT INTO job_position (position_id, position_name, position_respons, position
 	(09, 'Mia', 'Thomas', 28, 2),
 	(010, 'Elijah', 'Moore', 38, 2);
 	
-	ALTER TABLE employee 
-	ADD COLUMN employee_phone_number VARCHAR(30),
-	ADD COLUMN employee_email VARCHAR(320);
+
 	
 	UPDATE employee
-	SET 
-	    employee_phone_number = CASE employee_id
-	        WHEN 1 THEN '+1-555-0101'
-	        WHEN 2 THEN '+1-555-0102'
-	        WHEN 3 THEN '+1-555-0103'
-	        WHEN 4 THEN '+1-555-0104'
-	        WHEN 5 THEN '+1-555-0105'
-	        WHEN 6 THEN '+1-555-0106'
-	        WHEN 7 THEN '+1-555-0107'
-	        WHEN 8 THEN '+1-555-0108'
-	        WHEN 9 THEN '+1-555-0109'
-	        WHEN 10 THEN '+1-555-0110'
-	    END,
-	    employee_email = CASE employee_id
-	        WHEN 1 THEN 'anna@example.com'
-	        WHEN 2 THEN 'emma@example.com'
-	        WHEN 3 THEN 'liam@example.com'
-	        WHEN 4 THEN 'olivia@example.com'
-	        WHEN 5 THEN 'noah@example.com'
-	        WHEN 6 THEN 'sophia@example.com'
-	        WHEN 7 THEN 'james@example.com'
-	        WHEN 8 THEN 'isabella@example.com'
-	        WHEN 9 THEN 'mia@example.com'
-	        WHEN 10 THEN 'elijah@example.com'
-    END;
+SET phone_number = '123-456-7890', 
+    email = 'anna.koval@example.com'
+WHERE id = 1;
+
+UPDATE employee
+SET phone_number = '234-567-8901', 
+    email = 'emma.johnson@example.com'
+WHERE id = 2;
+
+UPDATE employee
+SET phone_number = '345-678-9012', 
+    email = 'liam.smith@example.com'
+WHERE id = 3;
+
+UPDATE employee
+SET phone_number = '456-789-0123', 
+    email = 'olivia.brown@example.com'
+WHERE id = 4;
+
+UPDATE employee
+SET phone_number = '567-890-1234', 
+    email = 'noah.davis@example.com'
+WHERE id = 5;
+
+UPDATE employee
+SET phone_number = '678-901-2345', 
+    email = 'sophia.wilson@example.com'
+WHERE id = 6;
+
+UPDATE employee
+SET phone_number = '789-012-3456', 
+    email = 'james.miller@example.com'
+WHERE id = 7;
+
+UPDATE employee
+SET phone_number = '890-123-4567', 
+    email = 'isabella.taylor@example.com'
+WHERE id = 8;
+
+UPDATE employee
+SET phone_number = '901-234-5678', 
+    email = 'mia.thomas@example.com'
+WHERE id = 9;
+
+UPDATE employee
+SET phone_number = '012-345-6789', 
+    email = 'elijah.moore@example.com'
+WHERE id = 10;
