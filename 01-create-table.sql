@@ -3,6 +3,7 @@
 	name VARCHAR(30) NOT NULL,
 	last_name VARCHAR(30) NOT NULL,
 	position VARCHAR NOT NULL,
+	obligation VARCHAR(30),
 	salary NUMERIC CHECK(employee_salary > 0)
 	);
 	
@@ -20,7 +21,6 @@
 	CREATE TABLE position(
 	id UUID PRIMARY KEY,
 	name VARCHAR(30) NOT NULL,
-	obligation VARCHAR(30),
 	salary NUMERIC CHECK(salary > 0)
 	);
 	
@@ -39,7 +39,13 @@
 	ALTER TABLE position 
 	ALTER COLUMN name TYPE VARCHAR(100), 
 	ALTER COLUMN obligation TYPE VARCHAR(255);
-	
-	ALTER TABLE employee 
-	ADD COLUMN phone_number VARCHAR(30),
-	ADD COLUMN email VARCHAR(320);
+
+	ALTER TABLE employee
+    ALTER COLUMN obligation TYPE VARCHAR(255),
+    ADD COLUMN phone_number VARCHAR(30),
+    ADD COLUMN email VARCHAR(320);
+
+
+	-- 2 спосіб для генерування id 
+	-- ALTER TABLE employee
+    -- ALTER COLUMN id SET DEFAULT gen_random_uuid();

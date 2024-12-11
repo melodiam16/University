@@ -1,25 +1,42 @@
-INSERT INTO position (id, name, obligation, salary)
+INSERT INTO position (id, name, salary)
 	VALUES 
-	(1, 'Rector', 'Responsible for overall strategy, financial management, and organizational work.', 2000),
-	(2, 'Professor', 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.', 1500),
-	(3, 'University Accountant', 'Manages financial reporting and the budget.', 1100),
-	(4, 'Librarian', 'Organizes library operations, helping students and staff find resources.', 650),
-	(5, 'Program Coordinator', 'Manages specific educational programs or courses.', 800);
+	(1, 'Rector', 2000),
+	(2, 'Professor', 1500),
+	(3, 'University Accountant', 1100),
+	(4, 'Librarian', 650),
+	(5, 'Program Coordinator', 800);
 	
 	
-	INSERT INTO employee (id, name, last_name, age, position_id)
+-- 1 спосіб генерувати id формату uuid
+
+	INSERT INTO employee (id, name, last_name, age, position_id, obligation)
 	VALUES 
-	(01, 'Anna', 'Koval', 42, 2),
-	(02, 'Emma', 'Johnson', 27, 5),
-	(03, 'Liam', 'Smith', 54, 1),
-	(04, 'Olivia', 'Brown', 31, 4),
-	(05, 'Noah', 'Davis', 25, 3),
-	(06, 'Sophia', 'Wilson', 27, 3),
-	(07, 'James', 'Miller', 55, 2),
-	(08, 'Isabella', 'Taylor', 22, 4),
-	(09, 'Mia', 'Thomas', 28, 2),
-	(010, 'Elijah', 'Moore', 38, 2);
+	(gen_random_uuid(), 'Anna', 'Koval', 42, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
+	(gen_random_uuid(), 'Emma', 'Johnson', 27, 5, 'Manages specific educational programs or courses.'),
+	(gen_random_uuid(), 'Liam', 'Smith', 54, 1, 'Responsible for overall strategy, financial management, and organizational work.'),
+	(gen_random_uuid(), 'Olivia', 'Brown', 31, 4, 'Organizes library operations, helping students and staff find resources.'),
+	(gen_random_uuid(), 'Noah', 'Davis', 25, 3, 'Manages financial reporting and the budget.'),
+	(gen_random_uuid(), 'Sophia', 'Wilson', 27, 3, 'Manages financial reporting and the budget.'),
+	(gen_random_uuid(), 'James', 'Miller', 55, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
+	(gen_random_uuid(), 'Isabella', 'Taylor', 22, 4, 'Organizes library operations, helping students and staff find resources.'),
+	(gen_random_uuid(), 'Mia', 'Thomas', 28, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
+	(gen_random_uuid(), 'Elijah', 'Moore', 38, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.');
 	
+
+
+	-- 2 спосіб для генерування id 
+-- INSERT INTO employee (id, name, last_name, age, position_id, obligation)
+-- 	VALUES 
+-- 	( 'Anna', 'Koval', 42, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
+-- 	( 'Emma', 'Johnson', 27, 5, 'Manages specific educational programs or courses.'),
+-- 	( 'Liam', 'Smith', 54, 1, 'Responsible for overall strategy, financial management, and organizational work.'),
+-- 	( 'Olivia', 'Brown', 31, 4, 'Organizes library operations, helping students and staff find resources.'),
+-- 	( 'Noah', 'Davis', 25, 3, 'Manages financial reporting and the budget.'),
+-- 	( 'Sophia', 'Wilson', 27, 3, 'Manages financial reporting and the budget.'),
+-- 	( 'James', 'Miller', 55, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
+-- 	( 'Isabella', 'Taylor', 22, 4, 'Organizes library operations, helping students and staff find resources.'),
+-- 	('Mia', 'Thomas', 28, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
+-- 	( 'Elijah', 'Moore', 38, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.');
 
 	
 	UPDATE employee
