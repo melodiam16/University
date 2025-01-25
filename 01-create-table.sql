@@ -83,7 +83,7 @@ SELECT
     dl.duties AS liability_duties
 FROM 
     employee_liability el
-JOIN 
+INNER JOIN 
     employee e ON el.employee_id = e.id
-JOIN 
+INNER JOIN 
     dict_liability dl ON el.liability_id = dl.id;
