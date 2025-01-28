@@ -87,3 +87,35 @@ INNER JOIN
     employee e ON el.employee_id = e.id
 INNER JOIN 
     dict_liability dl ON el.liability_id = dl.id;
+
+
+
+CREATE TABLE student (
+    id UUID PRIMARY KEY,
+	name VARCHAR(30) NOT NULL,
+	birthdate DATE NOT NULL,
+	enroliment_date DATE NOT NULL,
+	graduation_date DATE NOT NULL,
+	national_od INTEGER NOT NULL,
+	gpa DECIMAL(3, 2)
+);
+
+
+
+
+CREATE TABLE exam (
+    id INTEGER PRIMARY KEY,
+	course_id INTEGER NOT NULL,
+	student_id UUID NOT NULL,
+	exam_date DATE NOT NULL,
+	grade DECIMAL(5, 2) NOT NULL
+);
+
+ALTER TABLE exam
+ALTER COLUMN course_id DROP NOT NULL;
+
+
+ALTER TABLE exam
+ADD CONSTRAINT fk_student
+FOREIGN KEY (student_id) REFERENCES student (id)
+ON DELETE CASCADE;
