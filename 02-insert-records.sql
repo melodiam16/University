@@ -104,7 +104,7 @@ INSERT INTO employee_liability (employee_id, liability_id) VALUES
 
 
 
-INSERT INTO student (id, name, birthdate, enroliment_date, graduation_date, national_od, gpa)
+INSERT INTO student (id, name, birthdate, enroliment_date, graduation_date, national_id, gpa)
 VALUES
 (gen_random_uuid(), 'Alice Johnson', '2000-05-12', '2018-09-01', '2022-06-15', 123456789, 3.85),
 (gen_random_uuid(), 'Bob Smith', '1999-11-20', '2017-09-01', '2021-06-15', 987654321, 3.45),
@@ -118,31 +118,59 @@ VALUES
 (gen_random_uuid(), 'Jack Harris', '1999-03-12', '2017-09-01', '2021-06-15', 321987654, 3.55);
 
 
-INSERT INTO exam (id, student_id, exam_date, grade)
+INSERT INTO exam ( student_id, exam_date, grade, id)
 VALUES
-(1, 'ee191bdf-a3b3-4cb5-98f7-6eb8d80c840f', '2020-12-10', 92.50),
-(2, '816b7954-c4ca-4eb0-bccf-56ee91ecac94', '2021-06-05', 88.75),
-(3, '5f7732c0-1630-4ce0-9c74-16b3152cf5e4', '2022-01-15', 94.00),
-(4, '5e485c42-aaa9-4a54-852c-456591960749', '2023-03-10', 89.00),
-(5, 'e83749a0-f096-434a-b5d0-70309108b56e', '2021-12-12', 85.50),
-(6, '40a35a7e-8521-42e1-93ea-20de8a45884d', '2020-10-20', 90.25),
-(7, '96c4d375-2dd9-4974-86fa-42f3d3e74943', '2022-05-15', 95.00),
-(8, '0072aef3-050d-43e3-9ab6-97e530819199', '2019-11-25', 87.00),
-(9, '432e3c85-9b20-4f6a-a576-35a7b69958ee', '2021-08-18', 91.75),
-(10, 'b9dd2920-dfee-40f2-8818-5881696f06d4', '2020-07-12', 86.50);
+('ee191bdf-a3b3-4cb5-98f7-6eb8d80c840f', '2020-12-10', 92.50, gen_random_uuid()),
+('816b7954-c4ca-4eb0-bccf-56ee91ecac94', '2021-06-05', 88.75, gen_random_uuid()),
+('5f7732c0-1630-4ce0-9c74-16b3152cf5e4', '2022-01-15', 94.00, gen_random_uuid()),
+('5e485c42-aaa9-4a54-852c-456591960749', '2023-03-10', 89.00, gen_random_uuid()),
+('e83749a0-f096-434a-b5d0-70309108b56e', '2021-12-12', 85.50, gen_random_uuid()),
+('40a35a7e-8521-42e1-93ea-20de8a45884d', '2020-10-20', 90.25, gen_random_uuid()),
+('96c4d375-2dd9-4974-86fa-42f3d3e74943', '2022-05-15', 95.00, gen_random_uuid()),
+('0072aef3-050d-43e3-9ab6-97e530819199', '2019-11-25', 87.00, gen_random_uuid()),
+('432e3c85-9b20-4f6a-a576-35a7b69958ee', '2021-08-18', 91.75, gen_random_uuid()),
+('b9dd2920-dfee-40f2-8818-5881696f06d4', '2020-07-12', 86.50, gen_random_uuid());
 
 
 
--- 2 спосіб для генерування id 
--- INSERT INTO employee (id, name, last_name, age, position_id, obligation)
--- 	VALUES 
--- 	( 'Anna', 'Koval', 42, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
--- 	( 'Emma', 'Johnson', 27, 5, 'Manages specific educational programs or courses.'),
--- 	( 'Liam', 'Smith', 54, 1, 'Responsible for overall strategy, financial management, and organizational work.'),
--- 	( 'Olivia', 'Brown', 31, 4, 'Organizes library operations, helping students and staff find resources.'),
--- 	( 'Noah', 'Davis', 25, 3, 'Manages financial reporting and the budget.'),
--- 	( 'Sophia', 'Wilson', 27, 3, 'Manages financial reporting and the budget.'),
--- 	( 'James', 'Miller', 55, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
--- 	( 'Isabella', 'Taylor', 22, 4, 'Organizes library operations, helping students and staff find resources.'),
--- 	('Mia', 'Thomas', 28, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.'),
--- 	( 'Elijah', 'Moore', 38, 2, 'A senior lecturer who delivers lectures, conducts scientific research, and supervises doctoral students.');
+
+INSERT INTO course (id, department_id, name, is_active, textbook, credits) VALUES
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440001', 'Introduction to Algorithms', TRUE, 'Introduction to Algorithms (Cormen)', 6),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440002', 'Database Systems', TRUE, 'Database System Concepts (Silberschatz)', 5),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440003', 'Operating Systems', TRUE, 'Modern Operating Systems (Tanenbaum)', 4),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440004', 'Computer Networks', FALSE, 'Computer Networking: A Top-Down Approach (Kurose)', 5),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440005', 'Artificial Intelligence', TRUE, 'Artificial Intelligence: A Modern Approach (Russell & Norvig)', 6),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440006', 'Machine Learning', TRUE, 'Pattern Recognition and Machine Learning (Bishop)', 6),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440007', 'Software Engineering', TRUE, 'Software Engineering: A Practitioner Approach (Pressman)', 5),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440008', 'Computer Architecture', TRUE, 'Computer Organization and Design (Patterson)', 4),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440009', 'Discrete Mathematics', TRUE, 'Discrete Mathematics and Its Applications (Rosen)', 5),
+    (gen_random_uuid(),'550e8400-e29b-41d4-a716-446655440010', 'Web Development', TRUE, 'Web Development with Node and Express (Hickson)', 6);
+
+
+
+
+INSERT INTO registration (id, student_id, course_id, semestr, year) VALUES
+    (gen_random_uuid(),'ee191bdf-a3b3-4cb5-98f7-6eb8d80c840f', '7d515738-550f-4afd-8933-a0cf099af4ab', 1, 2025),
+    (gen_random_uuid(),'816b7954-c4ca-4eb0-bccf-56ee91ecac94', 'f2ef1b8b-efda-45df-a4af-e20249fdd174', 2, 2025),
+    (gen_random_uuid(),'b9dd2920-dfee-40f2-8818-5881696f06d4', '9bffb4c6-81c1-44c2-9ac8-23faa26fd836', 1, 2024),
+    (gen_random_uuid(),'432e3c85-9b20-4f6a-a576-35a7b69958ee', '7d515738-550f-4afd-8933-a0cf099af4ab', 2, 2024),
+    (gen_random_uuid(),'96c4d375-2dd9-4974-86fa-42f3d3e74943', 'c030cb58-b0b4-4042-b440-52b30b30e478', 1, 2023),
+    (gen_random_uuid(),'e83749a0-f096-434a-b5d0-70309108b56e', '3cb1ba2d-a03d-416b-84d1-8960f0f1b94d', 2, 2023),
+    (gen_random_uuid(),'40a35a7e-8521-42e1-93ea-20de8a45884d', '724264ff-5213-41be-8a41-c07d403ae2aa', 1, 2022),
+    (gen_random_uuid(),'40a35a7e-8521-42e1-93ea-20de8a45884d', '5b0db0ba-6376-4986-bd4b-86cba39a501a', 2, 2022),
+    (gen_random_uuid(),'816b7954-c4ca-4eb0-bccf-56ee91ecac94', '5b4be71c-0fc8-4707-a979-c4f5389f504b', 1, 2021),
+    (gen_random_uuid(),'e83749a0-f096-434a-b5d0-70309108b56e', '50b109b6-cd77-42c6-89c6-0b9c9c2a04a9', 2, 2021);
+
+
+
+INSERT INTO prerequisite (id, course_id, prerequisite_id) VALUES
+    (gen_random_uuid(), '7d515738-550f-4afd-8933-a0cf099af4ab', gen_random_uuid()),
+    (gen_random_uuid(), 'f2ef1b8b-efda-45df-a4af-e20249fdd174', gen_random_uuid()),
+    (gen_random_uuid(), '3cb1ba2d-a03d-416b-84d1-8960f0f1b94d', gen_random_uuid()), 
+    (gen_random_uuid(), '5b0db0ba-6376-4986-bd4b-86cba39a501a', gen_random_uuid()), 
+    (gen_random_uuid(), '7d515738-550f-4afd-8933-a0cf099af4ab', gen_random_uuid()), 
+    (gen_random_uuid(), 'c030cb58-b0b4-4042-b440-52b30b30e478', gen_random_uuid()), 
+    (gen_random_uuid(), '50b109b6-cd77-42c6-89c6-0b9c9c2a04a9', gen_random_uuid()), 
+    (gen_random_uuid(), 'f2ef1b8b-efda-45df-a4af-e20249fdd174', gen_random_uuid()), 
+    (gen_random_uuid(), 'c030cb58-b0b4-4042-b440-52b30b30e478', gen_random_uuid()), 
+    (gen_random_uuid(), '5b0db0ba-6376-4986-bd4b-86cba39a501a', gen_random_uuid()); 

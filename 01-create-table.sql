@@ -96,7 +96,7 @@ CREATE TABLE student (
 	birthdate DATE NOT NULL,
 	enroliment_date DATE NOT NULL,
 	graduation_date DATE NOT NULL,
-	national_od INTEGER NOT NULL,
+	national_id INTEGER NOT NULL,
 	gpa DECIMAL(3, 2)
 );
 
@@ -104,18 +104,75 @@ CREATE TABLE student (
 
 
 CREATE TABLE exam (
-    id INTEGER PRIMARY KEY,
-	course_id INTEGER NOT NULL,
+    id UUID PRIMARY KEY,
 	student_id UUID NOT NULL,
 	exam_date DATE NOT NULL,
-	grade DECIMAL(5, 2) NOT NULL
+	grade DECIMAL(5, 2) NOT NULL,
+	course_id UUID
 );
-
-ALTER TABLE exam
-ALTER COLUMN course_id DROP NOT NULL;
 
 
 ALTER TABLE exam
 ADD CONSTRAINT fk_student
 FOREIGN KEY (student_id) REFERENCES student (id)
 ON DELETE CASCADE;
+
+ALTER TABLE exam
+ADD CONSTRAINT fk_course
+FOREIGN KEY (course_id) REFERENCES course (id)
+ON DELETE CASCADE;
+
+
+
+CREATE TABLE registration (
+	id UUID PRIMARY KEY,
+	student_id UUID NOT NULL,
+	course_id UUID,
+	semestr INTEGER NOT NULL,
+	year INTEGER NOT NULL,
+	registration_datetime TIMESTAMP DEFAULT NOW()        
+)
+
+-- TIMESTAMP — це тип даних, який зберігає дату та час (наприклад, 2025-02-01 14:30:00).
+-- DEFAULT NOW() — встановлює поточну дату та час, коли додається новий запис у таблицю.
+
+ALTER TABLE registration
+ADD CONSTRAINT fk_student
+FOREIGN KEY (student_id) REFERENCES student (id)
+ON DELETE CASCADE;
+
+
+CREATE TABLE course (
+	id UUID PRIMARY KEY,
+	department_id UUID,
+	name VARCHAR(225) NOT NULL,
+	is_active BOOLEAN DEFAULT TRUE,
+	textbook VARCHAR(225),
+	credits INTEGER NOT NULL
+)
+
+
+ALTER TABLE registration
+ADD CONSTRAINT fk_course
+FOREIGN KEY (course_id) REFERENCES course (id)
+ON DELETE CASCADE;
+
+
+
+CREATE TABLE prerequisite (
+	id UUID PRIMARY KEY,
+	course_id UUID,
+	prerequisite_id UUID
+)
+
+ALTER TABLE prerequisite
+ADD CONSTRAINT fk_course
+FOREIGN KEY (course_id) REFERENCES course (id)
+ON DELETE CASCADE;
+
+ALTER TABLE prerequisite
+ADD CONSTRAINT fk_prerequisite
+FOREIGN KEY (prerequisite_id) REFERENCES course (department_id)
+ON DELETE CASCADE;
+
+
