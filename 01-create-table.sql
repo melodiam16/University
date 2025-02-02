@@ -222,3 +222,43 @@ ALTER TABLE specification
 ADD CONSTRAINT fk_course
 FOREIGN KEY (course_id) REFERENCES course (id)
 ON DELETE CASCADE;
+
+
+CREATE TABLE faculty (
+	id UUID PRIMARY KEY,
+	department_id UUID,
+	name VARCHAR(225) NOT NULL,
+	position VARCHAR(255),
+	start_date DATE NOT NULL,
+	end_date DATE NOT NULL,
+	national_id UUID,
+	active BOOLEAN DEFAULT TRUE,
+)
+
+ALTER TABLE faculty
+ADD CONSTRAINT fk_department
+FOREIGN KEY (department_id) REFERENCES department (id)
+ON DELETE CASCADE;
+
+
+
+
+CREATE TABLE teaching (
+	id UUID PRIMARY KEY,
+	course_id UUID,
+	faculty_id UUID,
+	role VARCHAR(255),
+	semestr INTEGER NOT NULL,
+	year INTEGER NOT NULL,
+)
+
+ALTER TABLE teaching
+ADD CONSTRAINT fk_course
+FOREIGN KEY (course_id) REFERENCES course (id)
+ON DELETE CASCADE;
+
+
+ALTER TABLE teaching
+ADD CONSTRAINT fk_faculty
+FOREIGN KEY (faculty_id) REFERENCES faculty (id)
+ON DELETE CASCADE;

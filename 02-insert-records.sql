@@ -214,3 +214,32 @@ INSERT INTO specification (id, program_id, course_id, status) VALUES
 (gen_random_uuid(), '6167c0e0-23e7-4081-aca2-38e874ca5456', '9bffb4c6-81c1-44c2-9ac8-23faa26fd836', 'Inactive'),
 (gen_random_uuid(), 'bb81f2a4-102a-4f6f-ad8f-e6316285d10b', 'f2ef1b8b-efda-45df-a4af-e20249fdd174', 'Pending'),
 (gen_random_uuid(), 'e7081cb1-d3d5-413a-a3db-8ebc3fa54a37', '7d515738-550f-4afd-8933-a0cf099af4ab', 'Active');
+
+
+
+INSERT INTO faculty (id, department_id, name, position, start_date, end_date, national_id, active)
+VALUES
+    (gen_random_uuid(), '2644e17d-9116-4bd8-b929-bd49a9491c47', 'Dr. John Smith', 'Professor', '2015-09-01', '2030-06-30', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '6a73557a-48c5-4a85-813c-8f6c20e0ae04', 'Dr. Alice Johnson', 'Associate Professor', '2018-02-15', '2030-06-30', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), 'bfdfecbe-9b4f-47d9-9773-b64438cc678b', 'Dr. Robert Brown', 'Lecturer', '2020-08-20', '2028-08-20', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), 'bf2ce8c4-dcf7-4bc7-a65e-c5a68e768b57', 'Dr. Emily White', 'Assistant Professor', '2017-05-10', '2030-06-30', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '73d23fa8-bab2-4c18-9463-60f3a5e53a8d', 'Dr. Michael Green', 'Professor', '2012-01-20', '2030-06-30', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '7e8b769b-62b5-44d7-944a-cf91c341449e', 'Dr. Laura Adams', 'Senior Lecturer', '2019-09-01', '2032-06-30', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '87f8ac3e-491e-4cc0-9469-7dc0cb7ce896', 'Dr. David Wilson', 'Professor', '2010-03-15', '2029-03-15', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '506d6b46-8331-448e-a135-94da65baf6f6', 'Dr. Emma Carter', 'Assistant Lecturer', '2021-07-01', '2027-07-01', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '2c515e6b-e41a-4b2e-aa99-37f0ef2c8be9', 'Dr. William Anderson', 'Lecturer', '2016-01-10', '2028-01-10', gen_random_uuid(), TRUE),
+    (gen_random_uuid(), '64980559-a0e0-42a6-8194-69be41508dc1', 'Dr. Olivia Martin', 'Professor', '2013-11-05', '2035-11-05', gen_random_uuid(), TRUE);
+
+
+INSERT INTO teaching (id, course_id, faculty_id, role, semestr, year)
+VALUES
+    (gen_random_uuid(), '7d515738-550f-4afd-8933-a0cf099af4ab', 'fc6d9c52-a488-40a9-8a96-6ff19f1f148b', 'Lecturer', 1, 2024),
+    (gen_random_uuid(), 'f2ef1b8b-efda-45df-a4af-e20249fdd174', '93bf9640-bcc7-4fdf-b1b3-9213a530774c', 'Assistant', 2, 2024),
+    (gen_random_uuid(), '9bffb4c6-81c1-44c2-9ac8-23faa26fd836', 'f686eebd-06a7-47e4-a43d-6131dd0aa1df', 'Lecturer', 1, 2025),
+    (gen_random_uuid(), '768f3e32-4f52-430a-9eb8-539653914c44', '3b08a523-a212-44bd-afa1-a0b8d3cb7e4e', 'Professor', 2, 2025),
+    (gen_random_uuid(), 'c030cb58-b0b4-4042-b440-52b30b30e478', '2501feb6-44e1-4124-bb59-08ce692b6e27', 'Senior Lecturer', 1, 2026),
+    (gen_random_uuid(), '3cb1ba2d-a03d-416b-84d1-8960f0f1b94d', 'dcd78bd6-5381-478c-a0d5-8a72c10345bd', 'Lecturer', 2, 2026),
+    (gen_random_uuid(), '724264ff-5213-41be-8a41-c07d403ae2aa', '319caa99-3ee1-4227-b14e-38743a236dc5', 'Professor', 1, 2027),
+    (gen_random_uuid(), '5b0db0ba-6376-4986-bd4b-86cba39a501a', '0087fb3a-0436-4e89-a916-26a852b0d728', 'Assistant Lecturer', 2, 2027),
+    (gen_random_uuid(), '5b4be71c-0fc8-4707-a979-c4f5389f504b', '1caf888a-cde6-4c58-a141-6da9f25aecd6', 'Lecturer', 1, 2028),
+    (gen_random_uuid(), '50b109b6-cd77-42c6-89c6-0b9c9c2a04a9', 'd2e5a358-232f-4cff-ac57-03d6ac5394a1', 'Professor', 2, 2028);
